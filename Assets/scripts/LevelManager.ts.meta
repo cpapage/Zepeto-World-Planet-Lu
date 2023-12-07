@@ -1,0 +1,90 @@
+fileFormatVersion: 2
+guid: 6fad8ea2e66058745bf6de8446b21865
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst __UnityEngine__ = require(\"UnityEngine\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Entity_1 = require(\"./Entity\");\r\nconst Level_1 = require(\"./Level\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    Main_1 = require(\"./Main\");\r\nconst Health_1 = require(\"./Health\");\r\nconst
+    UIManager_1 = require(\"./UIManager\");\r\nconst Config_1 = require(\"./Config\");\r\nclass
+    LevelManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.EntityComponents = null;\r\n       
+    this.LevelComponent = null;\r\n        this.hasKilledAllEnemies = false;\r\n       
+    this.lastIndex = -1;\r\n        this.defeatedLordKren = false;\r\n    }\r\n   
+    CustomStart() {\r\n        this.hasKilledAllEnemies = false;\r\n        this.LevelComponent
+    = this.GameLevelObject.GetComponent($typeof(Level_1.default));\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Teleport(this.LevelComponent.PlayerSpawnPoint.position,
+    UnityEngine_1.Quaternion.identity);\r\n        this.EntityComponents = new Map();\r\n       
+    this.InstantiateEnemies();\r\n    }\r\n    CustomUpdate() {\r\n        if (!this.hasKilledAllEnemies)\r\n           
+    this.CheckIfAllEnemiesKilled();\r\n        if (this.defeatedLordKren) {\r\n           
+    Main_1.default.instance.SetGameState(Config_1.GameState.COMPLETE_GAME);\r\n           
+    UIManager_1.default.GetInstance().ShowTmpText(UIManager_1.default.GetInstance().WinText,
+    5);\r\n        }\r\n    }\r\n    CheckIfAllEnemiesKilled() {\r\n        let enemyAlive
+    = false;\r\n        this.EntityComponents.forEach(element => {\r\n           
+    if (element !== null && element.EntityType == Config_1.EntityType.ENEMY) {\r\n               
+    enemyAlive = true;\r\n            }\r\n        });\r\n        if (!enemyAlive
+    && !this.defeatedLordKren) {\r\n            UIManager_1.default.GetInstance().ShowTmpText(UIManager_1.default.GetInstance().KrenText,
+    5);\r\n            this.hasKilledAllEnemies = true;\r\n            this.SpawnLordKren();\r\n       
+    }\r\n    }\r\n    RestartGame() {\r\n        //clear enemy game objects\r\n       
+    this.EntityComponents.forEach(element => {\r\n            if (element !== null)
+    {\r\n                UnityEngine_1.GameObject.Destroy(element.gameObject);\r\n           
+    }\r\n        });\r\n        //reset player health\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject.GetComponent($typeof(Health_1.default)).health
+    = Config_1.PLAYER_HEALTH;\r\n        UIManager_1.default.GetInstance().UpdateUI();\r\n       
+    Main_1.default.instance.ControlsGO.SetActive(true);\r\n        Main_1.default.instance.UIZepetoControlsGO.SetActive(true);\r\n       
+    UIManager_1.default.GetInstance().KrenText.color.a = 1;\r\n        UIManager_1.default.GetInstance().WinText.color.a
+    = 1;\r\n        UIManager_1.default.GetInstance().WinText.gameObject.SetActive(false);\r\n       
+    UIManager_1.default.GetInstance().KrenText.gameObject.SetActive(false);\r\n       
+    UIManager_1.default.GetInstance().StopAllCoroutines();\r\n        Main_1.default.instance.SetGameState(Config_1.GameState.START);\r\n   
+    }\r\n    InstantiateEnemies() {\r\n        for (let i = 0; i < Main_1.default.instance.Configs.Level.EnemyTypes.length;
+    i++) {\r\n            const enemyType = Main_1.default.instance.Configs.Level.EnemyTypes[i];\r\n           
+    let enemyGO = null;\r\n            const spawnPosition = this.LevelComponent.NPCSpawnPoints[i].position;\r\n           
+    const rotation = this.LevelComponent.NPCSpawnPoints[i].rotation;\r\n           
+    switch (enemyType) {\r\n                case Config_1.EnemyType.NONE:\r\n                   
+    break;\r\n                case Config_1.EnemyType.HENCH:\r\n                   
+    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"Henchman
+    with rifle\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.FISH_BOAT:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"fishing
+    boat\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.TREE_CUT:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"tree
+    cutter\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.TRI_CAGE:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"triceratops
+    cage\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.T_CAGE:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"caged
+    tiger\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.EL_CAGE:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"elephant
+    cage\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.ALND_CAGE:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"alnd
+    cage\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.CLND_CAGE:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"clnd
+    cage\"), spawnPosition, rotation);\r\n                    break;\r\n               
+    case Config_1.EnemyType.KREN:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"Lord
+    Kren\"), spawnPosition, rotation);\r\n                    break;\r\n           
+    }\r\n            if (__UnityEngine__.Object.op_Inequality(enemyGO, null)) {\r\n               
+    const enemyComponent = enemyGO.GetComponent($typeof(Entity_1.default));\r\n               
+    enemyComponent.Id = i;\r\n                this.EntityComponents.set(i, enemyComponent);\r\n               
+    this.lastIndex = i;\r\n            }\r\n        }\r\n    }\r\n    SpawnLordKren()
+    {\r\n        let enemyGO = null;\r\n        const spawnPosition = this.LevelComponent.KrenSpawn.position;\r\n       
+    const rotation = this.LevelComponent.KrenSpawn.rotation;\r\n        enemyGO =
+    UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"Lord Kren\"),
+    spawnPosition, rotation);\r\n        const enemyComponent = enemyGO.GetComponent($typeof(Entity_1.default));\r\n       
+    enemyComponent.Id = ++this.lastIndex;\r\n        this.EntityComponents.set(enemyComponent.Id,
+    enemyComponent);\r\n    }\r\n}\r\nexports.default = LevelManager;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGV2ZWxNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTGV2ZWxNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUF3RTtBQUN4RSxpREFBcUQ7QUFDckQscUNBQThCO0FBQzlCLG1DQUFxQztBQUNyQyw2RUFBNEQ7QUFDNUQsaUNBQTBCO0FBQzFCLHFDQUE2QjtBQUM3QiwyQ0FBbUM7QUFDbkMscUNBQTJFO0FBRTNFLE1BQXFCLFlBQWEsU0FBUSxxQ0FBcUI7SUFBL0Q7O1FBRXVCLHFCQUFnQixHQUF3QixJQUFJLENBQUM7UUFFeEQsbUJBQWMsR0FBb0IsSUFBSSxDQUFDO1FBQ3ZDLHdCQUFtQixHQUFhLEtBQUssQ0FBQztRQUMzQixjQUFTLEdBQVksQ0FBQyxDQUFDLENBQUM7UUFDeEIscUJBQWdCLEdBQWEsS0FBSyxDQUFDO0lBMkgxRCxDQUFDO0lBekhHLFdBQVc7UUFDUCxJQUFJLENBQUMsbUJBQW1CLEdBQUcsS0FBSyxDQUFDO1FBQ2pDLElBQUksQ0FBQyxjQUFjLEdBQUcsSUFBSSxDQUFDLGVBQWUsQ0FBQyxZQUFZLFNBQUMsZUFBYyxFQUFHLENBQUM7UUFDMUUsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxjQUFjLENBQUMsZ0JBQWdCLENBQUMsUUFBUSxFQUFFLHdCQUFVLENBQUMsUUFBUSxDQUFDLENBQUM7UUFDdkksSUFBSSxDQUFDLGdCQUFnQixHQUFHLElBQUksR0FBRyxFQUFrQixDQUFDO1FBQ2xELElBQUksQ0FBQyxrQkFBa0IsRUFBRSxDQUFDO0lBQzlCLENBQUM7SUFFRCxZQUFZO1FBRVIsSUFBRyxDQUFDLElBQUksQ0FBQyxtQkFBbUI7WUFDeEIsSUFBSSxDQUFDLHVCQUF1QixFQUFFLENBQUM7UUFDbkMsSUFBRyxJQUFJLENBQUMsZ0JBQWdCLEVBQ3hCO1lBQ0ksY0FBSSxDQUFDLFFBQVEsQ0FBQyxZ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","assetPath":"Assets/scripts/LevelManager.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"GameLevelObject","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"lastIndex","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"HideInInspector","args":[]}]},{"assembly":"mscorlib","name":"defeatedLordKren","type":"System.Boolean","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"HideInInspector","args":[]}]}],"name":"LevelManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 5930464f0cf7659e2b7829b5147a58ce
+  onlyWriteTrigger: 0

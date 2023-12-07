@@ -1,0 +1,44 @@
+fileFormatVersion: 2
+guid: fd2269c7d3bdc6647869180d3bfe291c
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst Entity_1 = require(\"./Entity\");\r\nconst
+    Config_1 = require(\"./Config\");\r\nconst Main_1 = require(\"./Main\");\r\nconst
+    UIManager_1 = require(\"./UIManager\");\r\nclass Health extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n        this.health = this.maxHealth;\r\n        this.EntityComponent
+    = this.GetComponent($typeof(Entity_1.default));\r\n    }\r\n    takeDamage(damage)
+    {\r\n        this.health -= damage;\r\n        if (this.EntityComponent.EntityType
+    == Config_1.EntityType.PLAYER) {\r\n            UIManager_1.default.GetInstance().UpdateUI();\r\n           
+    if (this.health <= 0)\r\n                Main_1.default.instance.SetGameState(Config_1.GameState.COMPLETE_GAME);\r\n       
+    }\r\n    }\r\n    gainHealth(heal) {\r\n        this.health += heal;\r\n       
+    if (this.health > this.maxHealth)\r\n            this.health = this.maxHealth;\r\n   
+    }\r\n    OnCollisionEnter(other) {\r\n        if (other.gameObject.tag == \"PROJECTILE\")
+    {\r\n            this.takeDamage(10);\r\n        }\r\n        else if (other.gameObject.tag
+    == \"TRICERATOPS RAM\" && this.EntityComponent.EntityType == Config_1.EntityType.ENEMY)
+    {\r\n            this.takeDamage(25);\r\n        }\r\n        else if (other.gameObject.tag
+    == \"SCRATCH\" && this.EntityComponent.EntityType == Config_1.EntityType.ENEMY)
+    {\r\n            this.takeDamage(25);\r\n        }\r\n        else if (other.gameObject.tag
+    == \"ELEPHANT WHIP\" && this.EntityComponent.EntityType == Config_1.EntityType.ENEMY)
+    {\r\n            this.takeDamage(50);\r\n        }\r\n    }\r\n}\r\nexports.default
+    = Health;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSGVhbHRoLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiSGVhbHRoLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQW1EO0FBQ25ELGlEQUFxRDtBQUNyRCxxQ0FBOEI7QUFDOUIscUNBQWlEO0FBQ2pELGlDQUEwQjtBQUMxQiwyQ0FBb0M7QUFFcEMsTUFBcUIsTUFBTyxTQUFRLHFDQUFxQjtJQUtyRCxLQUFLO1FBRUQsSUFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDO1FBQzdCLElBQUksQ0FBQyxlQUFlLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxnQkFBTSxFQUFHLENBQUM7SUFDdkQsQ0FBQztJQUVELFVBQVUsQ0FBQyxNQUFjO1FBRXJCLElBQUksQ0FBQyxNQUFNLElBQUksTUFBTSxDQUFDO1FBQ3RCLElBQUcsSUFBSSxDQUFDLGVBQWUsQ0FBQyxVQUFVLElBQUksbUJBQVUsQ0FBQyxNQUFNLEVBQ3ZEO1lBQ0ksbUJBQVMsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxRQUFRLEVBQUUsQ0FBQztZQUNuQyxJQUFHLElBQUksQ0FBQyxNQUFNLElBQUksQ0FBQztnQkFDZixjQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxrQkFBUyxDQUFDLGFBQWEsQ0FBQyxDQUFDO1NBQzNEO0lBQ0wsQ0FBQztJQUVELFVBQVUsQ0FBQyxJQUFZO1FBRW5CLElBQUksQ0FBQyxNQUFNLElBQUksSUFBSSxDQUFDO1FBQ3BCLElBQUcsSUFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsU0FBUztZQUMzQixJQUFJLENBQUMsTUFBTSxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUM7SUFDckMsQ0FBQztJQUVELGdCQUFnQixDQUFDLEtBQWU7UUFFNUIsSUFBRyxLQUFLLENBQUMsVUFBVSxDQUFDLEdBQUcsSUFBSSxZQUFZLEVBQ3ZDO1lBQ0ksSUFBSSxDQUFDLFVBQVUsQ0FBQyxFQUFFLENBQUMsQ0FBQztTQUN2QjthQUNJLElBQUcsS0FBSyxDQUFDLFVBQVUsQ0FBQyxHQUFHLElBQUksaUJBQWlCLElBQUksSUFBSSxDQUFDLGVBQWUsQ0FBQyxVQUFVLElBQUksbUJBQVUsQ0FBQyxLQUFLLEVBQ3hHO1lBQ0ksSUFBSSxDQUFDLFVBQVUsQ0FBQyxFQUFFLENBQUMsQ0FBQztTQUN2QjthQUNJLElBQUcsS0FBSyxDQUFDLFVBQVUsQ0FBQyxHQUFHLElBQUksU0FBUyxJQUFJLElBQUksQ0FBQyxlQUFlLENBQUMsVUFBVSxJQUFJLG1CQUFVLENBQUMsS0FBSyxFQUNoRztZQUNJLElBQUksQ0FBQyxVQUFVLENBQUMsRUFBRSxDQUFDLENBQUM7U0FDdkI7YUFDSSxJQUFHLEtBQUssQ0FBQyxVQUFVLENBQUMsR0FBRyxJQUFJLGVBQWUsSUFBSSxJQUFJLENBQUMsZUFBZSxDQUFDLFVBQVUsSUFBSSxtQkFBVSxDQUFDLEtBQUssRUFDdEc7WUFDSSxJQUFJLENBQUMsVUFBVSxDQUFDLEVBQUUsQ0FBQyxDQUFDO1NBQ3ZCO0lBQ0wsQ0FBQztDQUNKO0FBaERELHlCQWdEQyJ9","assetPath":"Assets/scripts/Health.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"maxHealth","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"health","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"HideInInspector","args":[]}]},{"assembly":"","name":"EntityComponent","type":"C:/Users/Nick/Documents/Zepeto/Zepeto
+    demo project/Assets/scripts/Entity.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Health","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 2ecb2f2c5333babef8af5ab7f1696efc
+  onlyWriteTrigger: 0

@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 9ce8da7a7c042094badc243de66aac83
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass Water extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n    }\r\n    OnTriggerEnter(other) {\r\n        const _ridgidBody
+    = other.GetComponent($typeof(UnityEngine_1.Rigidbody));\r\n        if (_ridgidBody
+    != null)\r\n            _ridgidBody.AddForce(UnityEngine_1.Vector3.up, UnityEngine_1.ForceMode.Acceleration);\r\n       
+    else if (other.tag == \"PLAYER\") { }\r\n    }\r\n}\r\nexports.default = Water;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV2F0ZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJXYXRlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFtRjtBQUNuRixpREFBcUQ7QUFFckQsTUFBcUIsS0FBTSxTQUFRLHFDQUFxQjtJQUVwRCxLQUFLO0lBRUwsQ0FBQztJQUVELGNBQWMsQ0FBQyxLQUFnQjtRQUUzQixNQUFNLFdBQVcsR0FBZSxLQUFLLENBQUMsWUFBWSxTQUFDLHVCQUFTLEVBQUcsQ0FBQztRQUNoRSxJQUFHLFdBQVcsSUFBSSxJQUFJO1lBQ2xCLFdBQVcsQ0FBQyxRQUFRLENBQUMscUJBQU8sQ0FBQyxFQUFFLEVBQUUsdUJBQVMsQ0FBQyxZQUFZLENBQUMsQ0FBQzthQUN4RCxJQUFHLEtBQUssQ0FBQyxHQUFHLElBQUksUUFBUSxFQUFDLEdBQUU7SUFDcEMsQ0FBQztDQUVKO0FBZEQsd0JBY0MifQ==","assetPath":"Assets/scripts/Water.ts","manifest":{"properties":[],"name":"Water","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 317f254fddb99bbb736b677e67eccbd4
+  onlyWriteTrigger: 0

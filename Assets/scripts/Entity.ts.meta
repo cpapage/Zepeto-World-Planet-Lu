@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 1d949922fbbb99b4494bc4d561917b2d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass
+    Entity extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n       
+    super(...arguments);\r\n        this.Id = null;\r\n        this.EntityType =
+    null;\r\n    }\r\n    Init(id) {\r\n        this.Id = id;\r\n    }\r\n}\r\nexports.default
+    = Entity;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRW50aXR5LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRW50aXR5LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQXFEO0FBR3JELE1BQXFCLE1BQU8sU0FBUSxxQ0FBcUI7SUFBekQ7O1FBQ1csT0FBRSxHQUFZLElBQUksQ0FBQztRQUNuQixlQUFVLEdBQWdCLElBQUksQ0FBQztJQUsxQyxDQUFDO0lBSEcsSUFBSSxDQUFDLEVBQVc7UUFDWixJQUFJLENBQUMsRUFBRSxHQUFHLEVBQUUsQ0FBQztJQUNqQixDQUFDO0NBQ0o7QUFQRCx5QkFPQyJ9","assetPath":"Assets/scripts/Entity.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"Id","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"EntityType","type":"EntityType","isArray":false,"initValue":[],"enumKeys":["NONE","PLAYER","ALLY","ENEMY"],"enumValues":["0","1","2","3"],"attributes":[]}],"name":"Entity","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 4d1c350dcb195de39bae965782151b16
+  onlyWriteTrigger: 0

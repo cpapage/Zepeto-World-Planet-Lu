@@ -1,0 +1,40 @@
+fileFormatVersion: 2
+guid: 0602d736ef1927042876b9d0567a00d8
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst Main_1 = require(\"./Main\");\r\nconst
+    TerrainZoneTrigger_1 = require(\"./TerrainZoneTrigger\");\r\nclass AnimationController
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n        this.animator
+    = this.GetComponentInChildren($typeof(UnityEngine_1.Animator));\r\n    }\r\n   
+    ApplyOverrideAnimation(type) {\r\n        let state = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.CurrentState;\r\n       
+    //Override the animations based on the type enum\r\n        switch (type) {\r\n           
+    case TerrainZoneTrigger_1.ZoneType.WATER:\r\n                this.animator.runtimeAnimatorController
+    = Main_1.default.instance.swimAnimatorController;\r\n                break;\r\n       
+    }\r\n        this.animator.SetInteger(\"State\", state);\r\n    }\r\n    ApplyDeathAnimation()
+    {\r\n        this.animator.runtimeAnimatorController = Main_1.default.instance.DeathAnimatorController;\r\n   
+    }\r\n    ResetOverrides() {\r\n        //Reset Animations back to original states\r\n       
+    let state = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.CurrentState;\r\n       
+    this.animator.runtimeAnimatorController = Main_1.default.GetInstance().defaultAnimatorController;\r\n       
+    this.animator.SetInteger(\"State\", state);\r\n    }\r\n}\r\nexports.default
+    = AnimationController;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQW5pbWF0aW9uQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkFuaW1hdGlvbkNvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFDQSw2Q0FBd0g7QUFDeEgsNkVBQTBFO0FBQzFFLGlEQUFxRDtBQUNyRCxpQ0FBMEI7QUFDMUIsNkRBQWdEO0FBRWhELE1BQXFCLG1CQUFvQixTQUFRLHFDQUFxQjtJQUczRCxLQUFLO1FBRVIsSUFBSSxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUMsc0JBQXNCLFNBQUMsc0JBQVEsRUFBRyxDQUFDO0lBQzVELENBQUM7SUFFTSxzQkFBc0IsQ0FBQyxJQUFjO1FBRXhDLElBQUksS0FBSyxHQUFtQiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxZQUFZLENBQUM7UUFFbkcsZ0RBQWdEO1FBQ2hELFFBQU8sSUFBSSxFQUNYO1lBQ0ksS0FBSyw2QkFBUSxDQUFDLEtBQUs7Z0JBQ2YsSUFBSSxDQUFDLFFBQVEsQ0FBQyx5QkFBeUIsR0FBRyxjQUFJLENBQUMsUUFBUSxDQUFDLHNCQUFzQixDQUFDO2dCQUMvRSxNQUFNO1NBQ2I7UUFFRCxJQUFJLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxPQUFPLEVBQUMsS0FBSyxDQUFDLENBQUM7SUFDNUMsQ0FBQztJQUVNLG1CQUFtQjtRQUV0QixJQUFJLENBQUMsUUFBUSxDQUFDLHlCQUF5QixHQUFHLGNBQUksQ0FBQyxRQUFRLENBQUMsdUJBQXVCLENBQUM7SUFDcEYsQ0FBQztJQUVNLGNBQWM7UUFFakIsMENBQTBDO1FBQzFDLElBQUksS0FBSyxHQUFtQiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxZQUFZLENBQUM7UUFDbkcsSUFBSSxDQUFDLFFBQVEsQ0FBQyx5QkFBeUIsR0FBRyxjQUFJLENBQUMsV0FBVyxFQUFFLENBQUMseUJBQXlCLENBQUM7UUFDdkYsSUFBSSxDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsT0FBTyxFQUFDLEtBQUssQ0FBQyxDQUFDO0lBQzVDLENBQUM7Q0FFSjtBQXBDRCxzQ0FvQ0MifQ==","assetPath":"Assets/scripts/AnimationController.ts","manifest":{"properties":[],"name":"AnimationController","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 7213e5d29f2bc80fa60c159f6faa1aa8
+  onlyWriteTrigger: 0

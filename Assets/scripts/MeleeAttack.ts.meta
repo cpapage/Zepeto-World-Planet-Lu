@@ -1,0 +1,44 @@
+fileFormatVersion: 2
+guid: 8ecfbb3e54783fe4688b759170e54775
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst Entity_1 = require(\"./Entity\");\r\nconst
+    Config_1 = require(\"./Config\");\r\nconst Main_1 = require(\"./Main\");\r\nclass
+    MeleeAttack extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n       
+    this.my_Animator = this.GetComponent($typeof(UnityEngine_1.Animator));\r\n       
+    this.entityComponent = this.GetComponent($typeof(Entity_1.default));\r\n       
+    this.StartCoroutine(this.MeleeCoroutine());\r\n    }\r\n    *MeleeCoroutine()
+    {\r\n        while (true) {\r\n            let inRange = false;\r\n           
+    if (this.entityComponent.EntityType == Config_1.EntityType.ALLY) {\r\n               
+    Main_1.default.instance.LevelManager.EntityComponents.forEach(element => {\r\n                   
+    if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Inequality(element, null) && element.EntityType
+    == Config_1.EntityType.ENEMY) {\r\n                        const Distance = UnityEngine_1.Vector3.Distance(this.gameObject.transform.position,
+    element.gameObject.transform.position);\r\n                        if (Distance
+    <= this.AttackRange) {\r\n                            inRange = true;\r\n                       
+    }\r\n                    }\r\n                });\r\n            }\r\n           
+    if (inRange) {\r\n                this.my_Animator.SetTrigger(\"attack\");\r\n               
+    const Slash = UnityEngine_1.GameObject.Instantiate(this.WaveObject, this.SlashPoint.position,
+    this.SlashPoint.rotation);\r\n                Slash.transform.forward = this.SlashPoint.forward;\r\n               
+    yield new UnityEngine_1.WaitForSeconds(this.AttackDelayInSeconds);\r\n           
+    }\r\n            yield null;\r\n        }\r\n    }\r\n}\r\nexports.default =
+    MeleeAttack;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWVsZWVBdHRhY2suanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJNZWxlZUF0dGFjay50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFrRztBQUNsRyxpREFBcUQ7QUFDckQscUNBQThCO0FBQzlCLHFDQUFzQztBQUN0QyxpQ0FBMEI7QUFFMUIsTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQVExRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFdBQVcsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLHNCQUFRLEVBQUcsQ0FBQztRQUNqRCxJQUFJLENBQUMsZUFBZSxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsZ0JBQU0sRUFBRyxDQUFDO1FBQ25ELElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLGNBQWMsRUFBRSxDQUFDLENBQUM7SUFDL0MsQ0FBQztJQUVPLENBQUMsY0FBYztRQUVuQixPQUFNLElBQUksRUFDVjtZQUNJLElBQUksT0FBTyxHQUFhLEtBQUssQ0FBQztZQUM5QixJQUFHLElBQUksQ0FBQyxlQUFlLENBQUMsVUFBVSxJQUFJLG1CQUFVLENBQUMsSUFBSSxFQUNyRDtnQkFDSSxjQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLEVBQUU7b0JBQzFELElBQUcsQUEzQmQscUNBQXFCLENBaURrbUssYUFBYyxDQXRCdm5LLE9BQU8sRUFBSSxJQUFJLEtBQUksT0FBTyxDQUFDLFVBQVUsSUFBSSxtQkFBVSxDQUFDLEtBQUssRUFDNUQ7d0JBQ0ksTUFBTSxRQUFRLEdBQVkscUJBQU8sQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLE9BQU8sQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDO3dCQUN0SCxJQUFHLFFBQVEsSUFBSSxJQUFJLENBQUMsV0FBVyxFQUMvQjs0QkFDSSxPQUFPLEdBQUcsSUFBSSxDQUFDO3lCQUNsQjtxQkFDSjtnQkFDTCxDQUFDLENBQUMsQ0FBQTthQUNMO1lBRUQsSUFBRyxPQUFPLEVBQ1Y7Z0JBQ0ksSUFBSSxDQUFDLFdBQVcsQ0FBQyxVQUFVLENBQUMsUUFBUSxDQUFDLENBQUM7Z0JBQ3RDLE1BQU0sS0FBSyxHQUFnQix3QkFBVSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxVQUFVLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxVQUFVLENBQUMsUUFBUSxDQUFlLENBQUM7Z0JBQ3JJLEtBQUssQ0FBQyxTQUFTLENBQUMsT0FBTyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUMsT0FBTyxDQUFDO2dCQUNsRCxNQUFNLElBQUksNEJBQWMsQ0FBQyxJQUFJLENBQUMsb0JBQW9CLENBQUMsQ0FBQzthQUN2RDtZQUNELE1BQU0sSUFBSSxDQUFDO1NBQ2Q7SUFDTCxDQUFDO0NBRUo7QUE1Q0QsOEJBNENDIn0=","assetPath":"Assets/scripts/MeleeAttack.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"SlashPoint","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"WaveObject","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"AttackRange","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"AttackDelayInSeconds","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"MeleeAttack","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 5e8dcc3dfa6aa0c3169c16e0fb616280
+  onlyWriteTrigger: 0

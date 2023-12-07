@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: a895fccc715264f4e80628721bd294c9
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Health_1 = require(\"./Health\");\r\nconst Entity_1 = require(\"./Entity\");\r\nconst
+    Main_1 = require(\"./Main\");\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nclass
+    Enemy extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n       
+    this.hp = this.GetComponent($typeof(Health_1.default));\r\n        this.EntityComponent
+    = this.GetComponent($typeof(Entity_1.default));\r\n    }\r\n    Update() {\r\n       
+    if (this.hp.health <= 0) {\r\n            Main_1.default.instance.LevelManager.EntityComponents.set(this.EntityComponent.Id,
+    null);\r\n            UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n       
+    }\r\n    }\r\n}\r\nexports.default = Enemy;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRW5lbXkuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJFbmVteS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCxxQ0FBNkI7QUFDN0IscUNBQThCO0FBQzlCLGlDQUEwQjtBQUMxQiw2Q0FBeUM7QUFFekMsTUFBcUIsS0FBTSxTQUFRLHFDQUFxQjtJQUlwRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLEVBQUUsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLGdCQUFNLEVBQUcsQ0FBQztRQUN0QyxJQUFJLENBQUMsZUFBZSxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsZ0JBQU0sRUFBRyxDQUFDO0lBQ3ZELENBQUM7SUFFRCxNQUFNO1FBRUYsSUFBRyxJQUFJLENBQUMsRUFBRSxDQUFDLE1BQU0sSUFBSSxDQUFDLEVBQ3RCO1lBQ0ksY0FBSSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsZ0JBQWdCLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxlQUFlLENBQUMsRUFBRSxFQUFFLElBQUksQ0FBQyxDQUFDO1lBQy9FLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQztTQUN2QztJQUNMLENBQUM7Q0FFSjtBQWxCRCx3QkFrQkMifQ==","assetPath":"Assets/scripts/Enemy.ts","manifest":{"properties":[],"name":"Enemy","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: d650f7d09c9a29116bd570c25b24b279
+  onlyWriteTrigger: 0

@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 116e0f69f680144409631409abf1bac4
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst ZEPETO_Character_Controller_1
+    = require(\"ZEPETO.Character.Controller\");\r\nconst Health_1 = require(\"./Health\");\r\nclass
+    ShootButton extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n       
+    this.MyButton.onClick.AddListener(() => {\r\n            let playerHP = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject.GetComponent($typeof(Health_1.default));\r\n           
+    if (playerHP.health > 0) {\r\n                let pPos = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.position;\r\n               
+    let ydisplacement = 1;\r\n                pPos.y += ydisplacement;\r\n               
+    pPos.x += ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.forward.x;\r\n               
+    pPos.y += ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.forward.y;\r\n               
+    pPos.z += ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.forward.z;\r\n               
+    const bullet = UnityEngine_1.GameObject.Instantiate(this.projectile, pPos, UnityEngine_1.Quaternion.identity);\r\n               
+    bullet.transform.forward = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.forward;\r\n           
+    }\r\n        });\r\n    }\r\n}\r\nexports.default = ShootButton;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU2hvb3RCdXR0b24uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJTaG9vdEJ1dHRvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUVyRCw2Q0FBOEQ7QUFDOUQsNkVBQTREO0FBQzVELHFDQUE2QjtBQUU3QixNQUFxQixXQUFZLFNBQVEscUNBQXFCO0lBSTFELEtBQUs7UUFDRCxJQUFJLENBQUMsUUFBUSxDQUFDLE9BQU8sQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ25DLElBQUksUUFBUSxHQUFZLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsZ0JBQU0sRUFBRyxDQUFDO1lBQ3BILElBQUcsUUFBUSxDQUFDLE1BQU0sR0FBRyxDQUFDLEVBQ3RCO2dCQUNJLElBQUksSUFBSSxHQUFZLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUM7Z0JBQ2pHLElBQUksYUFBYSxHQUFZLENBQUMsQ0FBQztnQkFDL0IsSUFBSSxDQUFDLENBQUMsSUFBSSxhQUFhLENBQUM7Z0JBQ3hCLElBQUksQ0FBQyxDQUFDLElBQUksMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUM7Z0JBQ3hGLElBQUksQ0FBQyxDQUFDLElBQUksMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUM7Z0JBQ3hGLElBQUksQ0FBQyxDQUFDLElBQUksMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUM7Z0JBQ3hGLE1BQU0sTUFBTSxHQUFnQix3QkFBVSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksRUFBRSx3QkFBVSxDQUFDLFFBQVEsQ0FBZSxDQUFDO2dCQUM3RyxNQUFNLENBQUMsU0FBUyxDQUFDLE9BQU8sR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsT0FBTyxDQUFDO2FBQzFHO1FBQ0wsQ0FBQyxDQUFDLENBQUE7SUFDTixDQUFDO0NBQ0o7QUFwQkQsOEJBb0JDIn0=","assetPath":"Assets/scripts/ShootButton.ts","manifest":{"properties":[{"assembly":"UnityEngine.UI","name":"MyButton","type":"UnityEngine.UI.Button","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"projectile","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"ShootButton","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: d7d9355bebc1f9db62985726c74de1c9
+  onlyWriteTrigger: 0

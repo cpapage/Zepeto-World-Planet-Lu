@@ -1,0 +1,64 @@
+fileFormatVersion: 2
+guid: 39accbcf727a71a45a7809eb847d3e33
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst __UnityEngine__ = require(\"UnityEngine\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    Entity_1 = require(\"./Entity\");\r\nconst Main_1 = require(\"./Main\");\r\nconst
+    Config_1 = require(\"./Config\");\r\nclass LookAt extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n        if (__UnityEngine__.Object.op_Equality(this.joint,
+    null))\r\n            this.idir = this.transform.localEulerAngles;\r\n       
+    else\r\n            this.idir = this.joint.transform.localEulerAngles;\r\n       
+    this.entityComponent = this.GetComponent($typeof(Entity_1.default));\r\n       
+    this.is_facing = false;\r\n    }\r\n    Update() {\r\n        let closestEnemy
+    = null;\r\n        let shortestDistance = Number.MAX_VALUE;\r\n        if (!this.Is_Caged
+    && this.entityComponent.EntityType == Config_1.EntityType.ALLY) {\r\n           
+    Main_1.default.instance.LevelManager.EntityComponents.forEach(element => {\r\n               
+    if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Inequality(element, null) && element.EntityType
+    == Config_1.EntityType.ENEMY) {\r\n                    const Distance = UnityEngine_1.Vector3.Distance(this.gameObject.transform.position,
+    element.gameObject.transform.position);\r\n                    if (Distance <
+    shortestDistance) {\r\n                        shortestDistance = Distance;\r\n                       
+    closestEnemy = element;\r\n                    }\r\n                }\r\n           
+    });\r\n        }\r\n        if (shortestDistance <= this.radius) {\r\n           
+    let enemyPos = closestEnemy.gameObject.transform.position;\r\n            enemyPos.y
+    += 1;\r\n            this.lookAt(enemyPos);\r\n        }\r\n        else if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer
+    !== null) {\r\n            let playerPos = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject.transform.position;\r\n           
+    playerPos.y += 1;\r\n            this.lookAt(playerPos);\r\n        }\r\n   
+    }\r\n    lookAt(target) {\r\n        let magnitude = UnityEngine_1.Vector3.Distance(this.gameObject.transform.position,
+    target);\r\n        if (magnitude <= this.radius) {\r\n            if (__UnityEngine__.Object.op_Equality(this.joint,
+    null))\r\n                this.transform.LookAt(target);\r\n            else
+    {\r\n                this.joint.transform.LookAt(target);\r\n               
+    let currentAngle = this.joint.transform.localEulerAngles.y;\r\n               
+    if (this.idir.y <= 360 && this.idir.y >= 180 && currentAngle >= 0 && currentAngle
+    < 90)\r\n                    currentAngle = 360;\r\n                else {\r\n                   
+    currentAngle = Math.min(currentAngle, this.idir.y + 90);\r\n                   
+    currentAngle = Math.max(currentAngle, this.idir.y - 90);\r\n                }\r\n               
+    let vec = new UnityEngine_1.Vector3(this.joint.transform.localEulerAngles.x,
+    currentAngle, this.joint.transform.localEulerAngles.z);\r\n                this.joint.transform.localEulerAngles
+    = vec;\r\n            }\r\n            this.is_facing = true;\r\n        }\r\n       
+    else {\r\n            this.is_facing = false;\r\n            if (this.gameObject.tag
+    != \"LORD KREN\") {\r\n                if (__UnityEngine__.Object.op_Equality(this.joint,
+    null))\r\n                    this.transform.localEulerAngles = this.idir;\r\n               
+    else\r\n                    this.joint.transform.localEulerAngles = this.idir;\r\n           
+    }\r\n        }\r\n    }\r\n}\r\nexports.default = LookAt;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTG9va0F0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTG9va0F0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUFpRDtBQUNqRCxpREFBcUQ7QUFDckQsNkVBQTJEO0FBQzNELHFDQUE4QjtBQUM5QixpQ0FBMEI7QUFDMUIscUNBQXNDO0FBRXRDLE1BQXFCLE1BQU8sU0FBUSxxQ0FBcUI7SUFRckQsS0FBSztRQUVELDJCQTZFMGxQLFdBQVksQ0E3RW5tUCxJQUFJLENBQUMsS0FBSyxFQUFJLElBQUk7WUFDakIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLGdCQUFnQixDQUFDOztZQUU1QyxJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsU0FBUyxDQUFDLGdCQUFnQixDQUFDO1FBQ3RELElBQUksQ0FBQyxlQUFlLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxnQkFBTSxFQUFHLENBQUM7UUFDbkQsSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7SUFDM0IsQ0FBQztJQUVELE1BQU07UUFFRixJQUFJLFlBQVksR0FBWSxJQUFJLENBQUM7UUFDakMsSUFBSSxnQkFBZ0IsR0FBWSxNQUFNLENBQUMsU0FBUyxDQUFDO1FBRWpELElBQUcsQ0FBQyxJQUFJLENBQUMsUUFBUSxJQUFJLElBQUksQ0FBQyxlQUFlLENBQUMsVUFBVSxJQUFJLG1CQUFVLENBQUMsSUFBSSxFQUN2RTtZQUNJLGNBQUksQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLGdCQUFnQixDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsRUFBRTtnQkFDMUQsSUFBRyxBQWhDVixxQ0FBcUIsQ0E2RmloSCxhQUFjLENBN0QxaUgsT0FBTyxFQUFJLElBQUksS0FBSSxPQUFPLENBQUMsVUFBVSxJQUFJLG1CQUFVLENBQUMsS0FBSyxFQUM1RDtvQkFDSSxNQUFNLFFBQVEsR0FBWSxxQkFBTyxDQUFDLFFBQVEsQ0FBQyxJQUFJ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","assetPath":"Assets/scripts/LookAt.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"radius","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"joint","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"entityComponent","type":"C:/Users/Nick/Documents/Zepeto/Zepeto
+    demo project/Assets/scripts/Entity.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"Is_Caged","type":"System.Boolean","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"is_facing","type":"System.Boolean","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"HideInInspector","args":[]}]}],"name":"LookAt","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 1c847149ec13476b121749ec9cb3f6da
+  onlyWriteTrigger: 0

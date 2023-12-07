@@ -1,0 +1,48 @@
+fileFormatVersion: 2
+guid: df7173f4d9bc68e4eb79b0b00ea1bc6e
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst Health_1 = require(\"./Health\");\r\nconst
+    GameOverWindow_1 = require(\"./GameOverWindow\");\r\nclass UIManager extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    static GetInstance() {\r\n       
+    if (UIManager.instance == undefined) {\r\n            UIManager.instance = UnityEngine_1.GameObject.Find(\"UIManager\").GetComponent($typeof(UIManager));\r\n       
+    }\r\n        return UIManager.instance;\r\n    }\r\n    Awake() {\r\n       
+    this.gameObject.name = \"UIManager\";\r\n    }\r\n    Start() {\r\n        this._gameOverScreen
+    = this.GameOverScreenGO.GetComponent($typeof(GameOverWindow_1.default));\r\n       
+    this.WinText.gameObject.SetActive(false);\r\n        this.KrenText.gameObject.SetActive(false);\r\n       
+    this._gameOverScreen.HideWindow();\r\n    }\r\n    get GameOverScreen() {\r\n       
+    if (this._gameOverScreen = undefined)\r\n            this._gameOverScreen = this.GameOverScreenGO.GetComponent($typeof(GameOverWindow_1.default));\r\n       
+    return this._gameOverScreen;\r\n    }\r\n    UpdateUI() {\r\n        let player
+    = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n       
+    let playerHealth = player.zepetoPlayer.character.gameObject.GetComponent($typeof(Health_1.default));\r\n       
+    this.PlayerHealth.text = playerHealth.health.toString();\r\n        if (playerHealth.health
+    <= 0) {\r\n            this._gameOverScreen.ShowWindow();\r\n        }\r\n   
+    }\r\n    ShowTmpText(Text, Timer) {\r\n        Text.gameObject.SetActive(true);\r\n       
+    Text.color.a = 1;\r\n        this.StartCoroutine(this.fadeText(Text, Timer));\r\n   
+    }\r\n    *fadeText(Text, Timer) {\r\n        let c = new UnityEngine_1.Color(0,
+    0, 0, 1);\r\n        let _timer = 0;\r\n        while (c.a >= 0) {\r\n           
+    _timer += UnityEngine_1.Time.deltaTime;\r\n            if (_timer >= Timer) {\r\n               
+    c.a -= UnityEngine_1.Time.deltaTime;\r\n                Text.color = c;\r\n           
+    }\r\n            yield;\r\n        }\r\n    }\r\n}\r\nexports.default = UIManager;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVUlNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVUlNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQ0EsNkNBQWlGO0FBQ2pGLDZFQUF5RTtBQUN6RSxpREFBcUQ7QUFDckQscUNBQThCO0FBQzlCLHFEQUE2QztBQUU3QyxNQUFxQixTQUFVLFNBQVEscUNBQXFCO0lBRWpELE1BQU0sQ0FBQyxXQUFXO1FBRXJCLElBQUcsU0FBUyxDQUFDLFFBQVEsSUFBSSxTQUFTLEVBQ2xDO1lBQ0ksU0FBUyxDQUFDLFFBQVEsR0FBRyx3QkFBVSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsQ0FBQyxZQUFZLFNBQUMsU0FBUyxFQUFHLENBQUM7U0FDL0U7UUFFRCxPQUFPLFNBQVMsQ0FBQyxRQUFRLENBQUM7SUFDOUIsQ0FBQztJQVNELEtBQUs7UUFFRCxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksR0FBRyxXQUFXLENBQUM7SUFDdkMsQ0FBQztJQUVELEtBQUs7UUFDRCxJQUFJLENBQUMsZUFBZSxHQUFHLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxZQUFZLFNBQUMsd0JBQWMsRUFBRyxDQUFDO1FBQzVFLElBQUksQ0FBQyxPQUFPLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUN6QyxJQUFJLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7UUFDMUMsSUFBSSxDQUFDLGVBQWUsQ0FBQyxVQUFVLEVBQUUsQ0FBQztJQUN0QyxDQUFDO0lBRUQsSUFBVyxjQUFjO1FBRXJCLElBQUcsSUFBSSxDQUFDLGVBQWUsR0FBRyxTQUFTO1lBQy9CLElBQUksQ0FBQyxlQUFlLEdBQUcsSUFBSSxDQUFDLGdCQUFnQixDQUFDLFlBQVksU0FBQyx3QkFBYyxFQUFHLENBQUM7UUFDaEYsT0FBTyxJQUFJLENBQUMsZUFBZSxDQUFDO0lBQ2hDLENBQUM7SUFFTSxRQUFRO1FBRVgsSUFBSSxNQUFNLEdBQWlCLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQztRQUM5RCxJQUFJLFlBQVksR0FBWSxNQUFNLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLGdCQUFNLEVBQUcsQ0FBQztRQUM1RixJQUFJLENBQUMsWUFBWSxDQUFDLElBQUksR0FBRyxZQUFZLENBQUMsTUFBTSxDQUFDLFFBQVEsRUFBRSxDQUFDO1FBQ3hELElBQUcsWUFBWSxDQUFDLE1BQU0sSUFBSSxDQUFDLEVBQzNCO1lBQ0ksSUFBSSxDQUFDLGVBQWUsQ0FBQyxVQUFVLEVBQUUsQ0FBQztTQUNyQztJQUNMLENBQUM7SUFFTSxXQUFXLENBQUMsSUFBc0IsRUFBRSxLQUFjO1FBRXJELElBQUksQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ2hDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUNqQixJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFDLENBQUM7SUFDcEQsQ0FBQztJQUVELENBQUMsUUFBUSxDQUFDLElBQXNCLEVBQUUsS0FBYztRQUU1QyxJQUFJLENBQUMsR0FBVyxJQUFJLG1CQUFLLENBQUMsQ0FBQyxFQUFDLENBQUMsRUFBQyxDQUFDLEVBQUMsQ0FBQyxDQUFDLENBQUM7UUFDbkMsSUFBSSxNQUFNLEdBQVksQ0FBQyxDQUFDO1FBQ3hCLE9BQU8sQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLEVBQ2Y7WUFDSSxNQUFNLElBQUksa0JBQUksQ0FBQyxTQUFTLENBQUM7WUFDekIsSUFBRyxNQUFNLElBQUksS0FBSyxFQUNsQjtnQkFDSSxDQUFDLENBQUMsQ0FBQyxJQUFJLGtCQUFJLENBQUMsU0FBUyxDQUFDO2dCQUN0QixJQUFJLENBQUMsS0FBSyxHQUFHLENBQUMsQ0FBQzthQUNsQjtZQUNELEtBQUssQ0FBQztTQUNUO0lBQ0wsQ0FBQztDQUVKO0FBeEVELDRCQXdFQyJ9","assetPath":"Assets/scripts/UIManager.ts","manifest":{"properties":[{"assembly":"Unity.TextMeshPro","name":"PlayerHealth","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"KrenText","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"WinText","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"GameOverScreenGO","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"UIManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 8a0ae4ac062ce72e0426a75ea0fb97ef
+  onlyWriteTrigger: 0

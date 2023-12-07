@@ -1,0 +1,73 @@
+fileFormatVersion: 2
+guid: 0953a7c0dcf0d7f46b8ab309722b71c8
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Config_1 = require(\"./Config\");\r\nconst LevelManager_1 = require(\"./LevelManager\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst ZEPETO_Character_Controller_1
+    = require(\"ZEPETO.Character.Controller\");\r\nconst ZEPETO_World_1 = require(\"ZEPETO.World\");\r\nconst
+    Health_1 = require(\"./Health\");\r\nconst Entity_1 = require(\"./Entity\");\r\nconst
+    AnimationController_1 = require(\"./AnimationController\");\r\nclass Main extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n        super(...arguments);\r\n       
+    this.Configs = null;\r\n        this.LevelManager = null;\r\n        this.LocalPlayer
+    = null;\r\n        this.ZepetoCamera = null;\r\n        this.playerSpawnPoint
+    = null;\r\n        this._gameState = null;\r\n    }\r\n    static GetInstance()
+    {\r\n        if (Main.instance == undefined) {\r\n            Main.instance =
+    UnityEngine_1.GameObject.Find(\"Main\").GetComponent($typeof(Main));\r\n       
+    }\r\n        return this.instance;\r\n    }\r\n    Awake() {\r\n        Main.instance
+    = this;\r\n    }\r\n    Start() {\r\n        this._gameState = Config_1.GameState.LOADING;\r\n       
+    this.Configs = new Config_1.default();\r\n        this.LevelManager = UnityEngine_1.GameObject.Find(\"LevelManager\").GetComponent($typeof(LevelManager_1.default));\r\n       
+    this.LoadLocalPlayer();\r\n    }\r\n    Update() {\r\n        this.RunStateMachine();\r\n   
+    }\r\n    RunStateMachine() {\r\n        switch (this._gameState) {\r\n           
+    case Config_1.GameState.NONE:\r\n                this._gameState = Config_1.GameState.LOADING;\r\n               
+    break;\r\n            case Config_1.GameState.LOADING:\r\n                break;\r\n           
+    case Config_1.GameState.START:\r\n                this.LevelManager.CustomStart();\r\n               
+    this._gameState = Config_1.GameState.CONTINUE;\r\n                break;\r\n           
+    case Config_1.GameState.CONTINUE:\r\n                this.LevelManager.CustomUpdate();\r\n               
+    break;\r\n            case Config_1.GameState.COMPLETE_GAME:\r\n               
+    const playerHP = this.LocalPlayer.zepetoPlayer.character.gameObject.GetComponent($typeof(Health_1.default));\r\n               
+    if (playerHP.health <= 0) {\r\n                    this.LocalPlayer.zepetoPlayer.character.StopMoving();\r\n                   
+    const animator = this.LocalPlayer.zepetoPlayer.character.gameObject.GetComponent($typeof(AnimationController_1.default));\r\n                   
+    animator.ApplyDeathAnimation();\r\n                    this.ControlsGO.SetActive(false);\r\n                   
+    this.UIZepetoControlsGO.SetActive(false);\r\n                }\r\n               
+    break;\r\n        }\r\n    }\r\n    SetGameState(gameState) {\r\n        this._gameState
+    = gameState;\r\n    }\r\n    LoadLocalPlayer() {\r\n        let info = new ZEPETO_Character_Controller_1.SpawnInfo();\r\n       
+    info.position = this.playerSpawnPoint.transform.position;\r\n        info.rotation
+    = this.playerSpawnPoint.transform.rotation;\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    ZEPETO_World_1.WorldService.userId, info, true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\r\n            this.LocalPlayer = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n           
+    this.LocalPlayer.zepetoPlayer.character.gameObject.tag = \"PLAYER\";\r\n           
+    const collider = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent($typeof(UnityEngine_1.CapsuleCollider));\r\n           
+    collider.isTrigger = true;\r\n            collider.height = 2;\r\n           
+    //this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent<Rigidbody>();\r\n           
+    const PEntityComponent = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent($typeof(Entity_1.default));\r\n           
+    PEntityComponent.EntityType = Config_1.EntityType.PLAYER;\r\n            const
+    hp = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent($typeof(Health_1.default));\r\n           
+    hp.maxHealth = Config_1.PLAYER_HEALTH;\r\n            hp.health = hp.maxHealth;\r\n           
+    this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent($typeof(AnimationController_1.default));\r\n           
+    this.ControlsGO = UnityEngine_1.GameObject.Find(\"Controls\");\r\n           
+    this.UIZepetoControlsGO = UnityEngine_1.GameObject.Find(\"UIZepetoPlayerControl\");\r\n           
+    this.ZepetoCamera = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.GetComponentInChildren($typeof(UnityEngine_1.Camera));\r\n           
+    this.SetGameState(Config_1.GameState.START);\r\n        });\r\n    }\r\n}\r\nexports.default
+    = Main;\r\nMain.instance = null;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWFpbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk1haW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQscUNBQXdFO0FBQ3hFLGlEQUEwQztBQUMxQyw2Q0FBNkY7QUFDN0YsNkVBQW9GO0FBQ3BGLCtDQUE0QztBQUM1QyxxQ0FBOEI7QUFDOUIscUNBQThCO0FBQzlCLCtEQUF3RDtBQUV4RCxNQUFxQixJQUFLLFNBQVEscUNBQXFCO0lBQXZEOztRQUVXLFlBQU8sR0FBWSxJQUFJLENBQUM7UUFDeEIsaUJBQVksR0FBa0IsSUFBSSxDQUFDO1FBQ25DLGdCQUFXLEdBQWlCLElBQUksQ0FBQztRQUNqQyxpQkFBWSxHQUFZLElBQUksQ0FBQztRQUM3QixxQkFBZ0IsR0FBZ0IsSUFBSSxDQUFDO1FBTXBDLGVBQVUsR0FBZSxJQUFJLENBQUM7SUE0RjFDLENBQUM7SUExRlUsTUFBTSxDQUFDLFdBQVc7UUFFckIsSUFBRyxJQUFJLENBQUMsUUFBUSxJQUFJLFNBQVMsRUFDN0I7WUFDSSxJQUFJLENBQUMsUUFBUSxHQUFHLHdCQUFVLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxDQUFDLFlBQVksU0FBQyxJQUFJLEVBQUcsQ0FBQztTQUNoRTtRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBRUQsS0FBSztRQUVELElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDO0lBQ3pCLENBQUM7SUFFRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFVBQVUsR0FBRyxrQkFBUyxDQUFDLE9BQU8sQ0FBQztRQUNwQyxJQUFJLENBQUMsT0FBTyxHQUFHLElBQUksZ0JBQU0sRUFBRSxDQUFDO1FBQzVCLElBQUksQ0FBQyxZQUFZLEdBQUcsd0JBQVUsQ0FBQyxJQUFJLENBQUMsY0FBYyxDQUFDLENBQUMsWUFBWSxTQUFDLHNCQUFZLEVBQUcsQ0FBQztRQUNqRixJQUFJLENBQUMsZUFBZSxFQUFFLENBQUM7SUFDM0Is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","assetPath":"Assets/scripts/Main.ts","manifest":{"properties":[{"assembly":"","name":"Configs","type":"C:/Users/Nick/Documents/Zepeto/Zepeto
+    demo project/Assets/scripts/Config.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"LevelManager","type":"C:/Users/Nick/Documents/Zepeto/Zepeto
+    demo project/Assets/scripts/LevelManager.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"ZEPETO.Character.Controller","name":"LocalPlayer","type":"ZEPETO.Character.Controller.LocalPlayer","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"ZepetoCamera","type":"UnityEngine.Camera","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"playerSpawnPoint","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AnimationModule","name":"swimAnimatorController","type":"UnityEngine.RuntimeAnimatorController","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AnimationModule","name":"defaultAnimatorController","type":"UnityEngine.RuntimeAnimatorController","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AnimationModule","name":"DeathAnimatorController","type":"UnityEngine.RuntimeAnimatorController","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"ControlsGO","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"UIZepetoControlsGO","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Main","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: e994b223a3d49fe2f1dcab92e55aeebb
+  onlyWriteTrigger: 0

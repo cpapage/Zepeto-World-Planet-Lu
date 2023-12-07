@@ -1,0 +1,45 @@
+fileFormatVersion: 2
+guid: ca6c08f3780ee014a896157879f35d02
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    LookAt_1 = require(\"./LookAt\");\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nclass
+    Shoot extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n       
+    super(...arguments);\r\n        this.BulletOrigin = null;\r\n        this.Bullet
+    = null;\r\n        this.FireRatePerSecond = 0;\r\n        this.range = 0;\r\n   
+    }\r\n    Start() {\r\n        this.StartCoroutine(this.FireCoroutine());\r\n   
+    }\r\n    *FireCoroutine() {\r\n        while (true) {\r\n            let playerPos
+    = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.position;\r\n           
+    let distance = UnityEngine_1.Vector3.Distance(playerPos, this.transform.position);\r\n           
+    if (distance <= this.range) {\r\n                this.InstantiateProjectile();\r\n               
+    yield new UnityEngine_1.WaitForSeconds(this.FireRatePerSecond);\r\n           
+    }\r\n            yield null;\r\n        }\r\n    }\r\n    InstantiateProjectile()
+    {\r\n        const projectile = UnityEngine_1.GameObject.Instantiate(this.Bullet,
+    this.BulletOrigin.transform.position, this.BulletOrigin.transform.rotation);\r\n       
+    let PlayerPos = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.position;\r\n       
+    PlayerPos.y += 1;\r\n        this.point(projectile, PlayerPos);\r\n    }\r\n   
+    point(projectile, target) {\r\n        let x = target.x - this.BulletOrigin.transform.position.x;\r\n       
+    let y = target.y - this.BulletOrigin.transform.position.y;\r\n        let z =
+    target.z - this.BulletOrigin.transform.position.z;\r\n        let bulletDir =
+    new UnityEngine_1.Vector3(x, y, z);\r\n        projectile.transform.forward =
+    bulletDir;\r\n    }\r\n}\r\nexports.default = Shoot;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU2hvb3QuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJTaG9vdC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCxxQ0FBNkI7QUFDN0IsNkNBQWtFO0FBQ2xFLDZFQUE0RDtBQUU1RCxNQUFxQixLQUFNLFNBQVEscUNBQXFCO0lBQXhEOztRQUVXLGlCQUFZLEdBQWdCLElBQUksQ0FBQztRQUNqQyxXQUFNLEdBQWdCLElBQUksQ0FBQztRQUMzQixzQkFBaUIsR0FBWSxDQUFDLENBQUM7UUFDL0IsVUFBSyxHQUFZLENBQUMsQ0FBQztJQXFDOUIsQ0FBQztJQW5DRyxLQUFLO1FBQ0QsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsYUFBYSxFQUFFLENBQUMsQ0FBQztJQUM5QyxDQUFDO0lBRU8sQ0FBQyxhQUFhO1FBRWxCLE9BQU0sSUFBSSxFQUNWO1lBQ0ksSUFBSSxTQUFTLEdBQWEsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQztZQUN2RyxJQUFJLFFBQVEsR0FBWSxxQkFBTyxDQUFDLFFBQVEsQ0FBQyxTQUFTLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQztZQUM3RSxJQUFHLFFBQVEsSUFBSSxJQUFJLENBQUMsS0FBSyxFQUN6QjtnQkFDSSxJQUFJLENBQUMscUJBQXFCLEVBQUUsQ0FBQztnQkFDN0IsTUFBTSxJQUFJLDRCQUFjLENBQUMsSUFBSSxDQUFDLGlCQUFpQixDQUFDLENBQUM7YUFDcEQ7WUFDRCxNQUFNLElBQUksQ0FBQztTQUNkO0lBQ0wsQ0FBQztJQUVPLHFCQUFxQjtRQUV6QixNQUFNLFVBQVUsR0FBZ0Isd0JBQVUsQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxJQUFJLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEVBQUUsSUFBSSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFlLENBQUM7UUFDOUosSUFBSSxTQUFTLEdBQWEsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQztRQUN2RyxTQUFTLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUNqQixJQUFJLENBQUMsS0FBSyxDQUFDLFVBQVUsRUFBRSxTQUFTLENBQUMsQ0FBQztJQUN0QyxDQUFDO0lBRU8sS0FBSyxDQUFDLFVBQXNCLEVBQUUsTUFBZTtRQUVqRCxJQUFJLENBQUMsR0FBWSxNQUFNLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUM7UUFDbkUsSUFBSSxDQUFDLEdBQVksTUFBTSxDQUFDLENBQUMsR0FBRyxJQUFJLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDO1FBQ25FLElBQUksQ0FBQyxHQUFZLE1BQU0sQ0FBQyxDQUFDLEdBQUcsSUFBSSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztRQUNuRSxJQUFJLFNBQVMsR0FBYSxJQUFJLHFCQUFPLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQztRQUMvQyxVQUFVLENBQUMsU0FBUyxDQUFDLE9BQU8sR0FBRyxTQUFTLENBQUM7SUFDN0MsQ0FBQztDQUNKO0FBMUNELHdCQTBDQyJ9","assetPath":"Assets/scripts/Shoot.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"BulletOrigin","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"Bullet","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"FireRatePerSecond","type":"System.Single","isArray":false,"initValue":["0"],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"range","type":"System.Single","isArray":false,"initValue":["0"],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Shoot","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 99f7c4d53014a9450cec7c19cc752bf4
+  onlyWriteTrigger: 0

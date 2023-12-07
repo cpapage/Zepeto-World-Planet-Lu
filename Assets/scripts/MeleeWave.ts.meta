@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: 973cf7fadb87d674ab52906eb2276aa5
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass MeleeWave extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.ForceAmount
+    = 0;\r\n        this._ridgidBody = null;\r\n        this._timer = 0;\r\n    }\r\n   
+    Start() {\r\n        this._ridgidBody = this.GetComponent($typeof(UnityEngine_1.Rigidbody));\r\n       
+    this._ridgidBody.AddForce(new UnityEngine_1.Vector3(this.transform.forward.x
+    * this.ForceAmount, this.transform.forward.y * this.ForceAmount, this.transform.forward.z
+    * this.ForceAmount), UnityEngine_1.ForceMode.Impulse);\r\n    }\r\n    Update()
+    {\r\n        this._timer += UnityEngine_1.Time.deltaTime;\r\n        if (this._timer
+    >= this.lifeTimeInSeconds)\r\n            UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n   
+    }\r\n}\r\nexports.default = MeleeWave;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWVsZWVXYXZlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTWVsZWVXYXZlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQXdGO0FBQ3hGLGlEQUFxRDtBQUVyRCxNQUFxQixTQUFVLFNBQVEscUNBQXFCO0lBQTVEOztRQUVXLGdCQUFXLEdBQVksQ0FBQyxDQUFDO1FBRXhCLGdCQUFXLEdBQWMsSUFBSSxDQUFDO1FBQzlCLFdBQU0sR0FBVyxDQUFDLENBQUM7SUFhL0IsQ0FBQztJQVhHLEtBQUs7UUFDRCxJQUFJLENBQUMsV0FBVyxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsdUJBQVMsRUFBRyxDQUFDO1FBQ2xELElBQUksQ0FBQyxXQUFXLENBQUMsUUFBUSxDQUFDLElBQUkscUJBQU8sQ0FBQyxJQUFJLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLEdBQUcsSUFBSSxDQUFDLFdBQVcsRUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLEdBQUcsSUFBSSxDQUFDLFdBQVcsRUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQyxFQUFFLHVCQUFTLENBQUMsT0FBTyxDQUFDLENBQUM7SUFDck0sQ0FBQztJQUVELE1BQU07UUFFRixJQUFJLENBQUMsTUFBTSxJQUFJLGtCQUFJLENBQUMsU0FBUyxDQUFDO1FBQzlCLElBQUcsSUFBSSxDQUFDLE1BQU0sSUFBSSxJQUFJLENBQUMsaUJBQWlCO1lBQ3BDLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQztJQUM1QyxDQUFDO0NBQ0o7QUFsQkQsNEJBa0JDIn0=","assetPath":"Assets/scripts/MeleeWave.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"ForceAmount","type":"System.Single","isArray":false,"initValue":["0"],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"lifeTimeInSeconds","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"MeleeWave","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: e6ffcad80124f683d7dc931632354f44
+  onlyWriteTrigger: 0

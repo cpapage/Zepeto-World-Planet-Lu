@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: aaaf4ef95f52ae344a171700bfbcafe9
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass Projectile extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.ForceAmount
+    = 0;\r\n        this._ridgidBody = null;\r\n        this._timer = 0;\r\n    }\r\n   
+    Start() {\r\n        this._ridgidBody = this.GetComponent($typeof(UnityEngine_1.Rigidbody));\r\n       
+    this._ridgidBody.AddForce(new UnityEngine_1.Vector3(this.transform.forward.x
+    * this.ForceAmount, this.transform.forward.y * this.ForceAmount, this.transform.forward.z
+    * this.ForceAmount), UnityEngine_1.ForceMode.Impulse);\r\n    }\r\n    Update()
+    {\r\n        this._timer += UnityEngine_1.Time.deltaTime;\r\n        if (this._timer
+    >= this.lifeTimeInSeconds)\r\n            UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n   
+    }\r\n    OnCollisionEnter(other) {\r\n        UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n   
+    }\r\n}\r\nexports.default = Projectile;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUHJvamVjdGlsZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlByb2plY3RpbGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBd0Y7QUFDeEYsaURBQXFEO0FBRXJELE1BQXFCLFVBQVcsU0FBUSxxQ0FBcUI7SUFBN0Q7O1FBRVcsZ0JBQVcsR0FBWSxDQUFDLENBQUM7UUFFeEIsZ0JBQVcsR0FBYyxJQUFJLENBQUM7UUFDOUIsV0FBTSxHQUFXLENBQUMsQ0FBQztJQWtCL0IsQ0FBQztJQWhCRyxLQUFLO1FBQ0QsSUFBSSxDQUFDLFdBQVcsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLHVCQUFTLEVBQUcsQ0FBQztRQUNsRCxJQUFJLENBQUMsV0FBVyxDQUFDLFFBQVEsQ0FBQyxJQUFJLHFCQUFPLENBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxXQUFXLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxXQUFXLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxXQUFXLENBQUMsRUFBRSx1QkFBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDO0lBQ3JNLENBQUM7SUFFRCxNQUFNO1FBRUYsSUFBSSxDQUFDLE1BQU0sSUFBSSxrQkFBSSxDQUFDLFNBQVMsQ0FBQztRQUM5QixJQUFHLElBQUksQ0FBQyxNQUFNLElBQUksSUFBSSxDQUFDLGlCQUFpQjtZQUNwQyx3QkFBVSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUM7SUFDNUMsQ0FBQztJQUVELGdCQUFnQixDQUFDLEtBQWU7UUFFNUIsd0JBQVUsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO0lBQ3hDLENBQUM7Q0FDSjtBQXZCRCw2QkF1QkMifQ==","assetPath":"Assets/scripts/Projectile.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"ForceAmount","type":"System.Single","isArray":false,"initValue":["0"],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"lifeTimeInSeconds","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Projectile","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: ce1fc09e38dab94d172333132687cb87
+  onlyWriteTrigger: 0

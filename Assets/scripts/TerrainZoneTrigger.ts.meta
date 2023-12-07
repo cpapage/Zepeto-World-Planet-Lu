@@ -1,0 +1,43 @@
+fileFormatVersion: 2
+guid: 91a76fff8edd04645ba406a8963fccab
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nexports.ZoneType = void 0;\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst AnimationController_1
+    = require(\"./AnimationController\");\r\nvar ZoneType;\r\n(function (ZoneType)
+    {\r\n    ZoneType[ZoneType[\"WATER\"] = 0] = \"WATER\";\r\n})(ZoneType = exports.ZoneType
+    || (exports.ZoneType = {}));\r\nclass ZoneTrigger extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    OnTriggerEnter(other) {\r\n        if (other.gameObject.tag == \"PLAYER\")
+    {\r\n            let animController = other.GetComponent($typeof(AnimationController_1.default));\r\n           
+    if (animController == undefined) {\r\n                console.error(\"Couldn''t
+    Find an Animator\");\r\n            }\r\n            this.ApplyZone(animController);\r\n       
+    }\r\n    }\r\n    OnTriggerExit(other) {\r\n        if (other.gameObject.tag
+    == \"PLAYER\") {\r\n            let animController = other.GetComponent($typeof(AnimationController_1.default));\r\n           
+    if (animController == undefined) {\r\n                console.error(\"Couldn''t
+    Find an Animator\");\r\n                return;\r\n            }\r\n           
+    this.ResetZone(animController);\r\n        }\r\n    }\r\n    ApplyZone(animController)
+    {\r\n        if (animController == undefined) {\r\n            console.error(\"Couldn''t
+    Find an Animator\");\r\n            return;\r\n        }\r\n        switch (this.zoneType)
+    {\r\n            case ZoneType.WATER:\r\n                animController.ApplyOverrideAnimation(this.zoneType);\r\n               
+    break;\r\n            default:\r\n                break;\r\n        }\r\n   
+    }\r\n    ResetZone(animController) {\r\n        animController.ResetOverrides();\r\n   
+    }\r\n}\r\nexports.default = ZoneTrigger;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGVycmFpblpvbmVUcmlnZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVGVycmFpblpvbmVUcmlnZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUF1QztBQUV2QyxpREFBcUQ7QUFDckQsK0RBQXdEO0FBRXhELElBQVksUUFHWDtBQUhELFdBQVksUUFBUTtJQUVoQix5Q0FBSyxDQUFBO0FBQ1QsQ0FBQyxFQUhXLFFBQVEsR0FBUixnQkFBUSxLQUFSLGdCQUFRLFFBR25CO0FBRUQsTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQUduRCxjQUFjLENBQUMsS0FBZTtRQUVqQyxJQUFJLEtBQUssQ0FBQyxVQUFVLENBQUMsR0FBRyxJQUFJLFFBQVEsRUFDcEM7WUFDSSxJQUFJLGNBQWMsR0FBd0IsS0FBSyxDQUFDLFlBQVksU0FBQyw2QkFBbUIsRUFBRyxDQUFDO1lBQ3BGLElBQUksY0FBYyxJQUFJLFNBQVMsRUFBRTtnQkFBRSxPQUFPLENBQUMsS0FBSyxDQUFDLDJCQUEyQixDQUFDLENBQUM7YUFBRTtZQUNoRixJQUFJLENBQUMsU0FBUyxDQUFDLGNBQWMsQ0FBQyxDQUFDO1NBQ2xDO0lBQ0wsQ0FBQztJQUVNLGFBQWEsQ0FBQyxLQUFlO1FBRWhDLElBQUksS0FBSyxDQUFDLFVBQVUsQ0FBQyxHQUFHLElBQUksUUFBUSxFQUNwQztZQUNJLElBQUksY0FBYyxHQUF3QixLQUFLLENBQUMsWUFBWSxTQUFDLDZCQUFtQixFQUFHLENBQUM7WUFDcEYsSUFBSSxjQUFjLElBQUksU0FBUyxFQUFFO2dCQUFFLE9BQU8sQ0FBQyxLQUFLLENBQUMsMkJBQTJCLENBQUMsQ0FBQztnQkFBQyxPQUFPO2FBQUU7WUFDeEYsSUFBSSxDQUFDLFNBQVMsQ0FBQyxjQUFjLENBQUMsQ0FBQztTQUNsQztJQUNMLENBQUM7SUFFTSxTQUFTLENBQUMsY0FBbUM7UUFFaEQsSUFBSSxjQUFjLElBQUksU0FBUyxFQUFFO1lBQUUsT0FBTyxDQUFDLEtBQUssQ0FBQywyQkFBMkIsQ0FBQyxDQUFDO1lBQUMsT0FBTztTQUFFO1FBQ3hGLFFBQU8sSUFBSSxDQUFDLFFBQVEsRUFDcEI7WUFDSSxLQUFLLFFBQVEsQ0FBQyxLQUFLO2dCQUNmLGNBQWMsQ0FBQyxzQkFBc0IsQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUM7Z0JBQ3JELE1BQU07WUFDVjtnQkFDSSxNQUFNO1NBQ2I7SUFDTCxDQUFDO0lBRU0sU0FBUyxDQUFDLGNBQW1DO1FBRWhELGNBQWMsQ0FBQyxjQUFjLEVBQUUsQ0FBQztJQUNwQyxDQUFDO0NBRUo7QUF6Q0QsOEJBeUNDIn0=","assetPath":"Assets/scripts/TerrainZoneTrigger.ts","manifest":{"properties":[{"assembly":"","name":"zoneType","type":"ZoneType","isArray":false,"initValue":[],"enumKeys":["WATER"],"enumValues":["0"],"attributes":[]}],"name":"ZoneTrigger","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 4157d99d8d81c1944dd07956ba7b47f2
+  onlyWriteTrigger: 0

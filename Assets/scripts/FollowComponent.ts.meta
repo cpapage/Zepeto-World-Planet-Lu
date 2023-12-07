@@ -1,0 +1,51 @@
+fileFormatVersion: 2
+guid: b03189a75449a9b43b245362e46e97be
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_AI_1 = require(\"UnityEngine.AI\");\r\nconst ZEPETO_Character_Controller_1
+    = require(\"ZEPETO.Character.Controller\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Entity_js_1 = require(\"./Entity.js\");\r\nconst Main_1 = require(\"./Main\");\r\nconst
+    Config_js_1 = require(\"./Config.js\");\r\nclass FollowComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.FollowTarget
+    = null;\r\n        this.NavMeshAgent = null;\r\n    }\r\n    get isMoving() {\r\n       
+    return this.NavMeshAgent.remainingDistance <= this.NavMeshAgent.stoppingDistance;\r\n   
+    }\r\n    Start() {\r\n        this.NavMeshAgent = this.GetComponent($typeof(UnityEngine_AI_1.NavMeshAgent));\r\n       
+    this.my_animator = this.GetComponent($typeof(UnityEngine_1.Animator));\r\n       
+    this.entityComponent = this.GetComponent($typeof(Entity_js_1.default));\r\n       
+    this.is_following = false;\r\n    }\r\n    Update() {\r\n        let closestEnemy
+    = null;\r\n        let shortestDistance = Number.MAX_VALUE;\r\n        if (this.entityComponent.EntityType
+    == Config_js_1.EntityType.ALLY) {\r\n            Main_1.default.instance.LevelManager.EntityComponents.forEach(element
+    => {\r\n                if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Inequality(element,
+    null) && element.EntityType == Config_js_1.EntityType.ENEMY) {\r\n                   
+    const Distance = UnityEngine_1.Vector3.Distance(this.gameObject.transform.position,
+    element.gameObject.transform.position);\r\n                    if (Distance <
+    shortestDistance) {\r\n                        shortestDistance = Distance;\r\n                       
+    closestEnemy = element;\r\n                    }\r\n                }\r\n           
+    });\r\n        }\r\n        if (shortestDistance <= this.range)\r\n           
+    this.NavMeshAgent.SetDestination(closestEnemy.transform.position);\r\n       
+    else if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer !==
+    null)\r\n            this.NavMeshAgent.SetDestination(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.position);\r\n       
+    this.is_following = !this.isMoving;\r\n        this.my_animator.SetBool(\"is
+    following\", this.is_following);\r\n    }\r\n}\r\nexports.default = FollowComponent;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRm9sbG93Q29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRm9sbG93Q29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTJEO0FBQzNELG1EQUE4QztBQUM5Qyw2RUFBNEQ7QUFDNUQsaURBQXFEO0FBQ3JELDJDQUFnQztBQUNoQyxpQ0FBeUI7QUFDekIsMkNBQXlDO0FBRXpDLE1BQXFCLGVBQWdCLFNBQVEscUNBQXFCO0lBQWxFOztRQUNXLGlCQUFZLEdBQWdCLElBQUksQ0FBQztRQUdoQyxpQkFBWSxHQUFrQixJQUFJLENBQUM7SUE0Qy9DLENBQUM7SUF4Q0csSUFBVyxRQUFRO1FBRWYsT0FBTyxJQUFJLENBQUMsWUFBWSxDQUFDLGlCQUFpQixJQUFJLElBQUksQ0FBQyxZQUFZLENBQUMsZ0JBQWdCLENBQUM7SUFDckYsQ0FBQztJQUVELEtBQUs7UUFDRCxJQUFJLENBQUMsWUFBWSxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsNkJBQVksRUFBRyxDQUFDO1FBQ3RELElBQUksQ0FBQyxXQUFXLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxzQkFBUSxFQUFHLENBQUM7UUFDakQsSUFBSSxDQUFDLGVBQWUsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLG1CQUFNLEVBQUcsQ0FBQztRQUNuRCxJQUFJLENBQUMsWUFBWSxHQUFHLEtBQUssQ0FBQztJQUM5QixDQUFDO0lBRUQsTUFBTTtRQUNGLElBQUksWUFBWSxHQUFZLElBQUksQ0FBQztRQUNqQyxJQUFJLGdCQUFnQixHQUFZLE1BQU0sQ0FBQyxTQUFTLENBQUM7UUFFakQsSUFBRyxJQUFJLENBQUMsZUFBZSxDQUFDLFVBQVUsSUFBSSxzQkFBVSxDQUFDLElBQUksRUFDckQ7WUFDSSxjQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLEVBQUU7Z0JBQzFELElBQUcsQUFoQ1YscUNBQXFCLENBcUR1MEosYUFBYyxDQXJCaDJKLE9BQU8sRUFBSSxJQUFJLEtBQUksT0FBTyxDQUFDLFVBQVUsSUFBSSxzQkFBVSxDQUFDLEtBQUssRUFDNUQ7b0JBQ0ksTUFBTSxRQUFRLEdBQVkscUJBQU8sQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLE9BQU8sQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDO29CQUN0SCxJQUFHLFFBQVEsR0FBRyxnQkFBZ0IsRUFDOUI7d0JBQ0ksZ0JBQWdCLEdBQUcsUUFBUSxDQUFDO3dCQUM1QixZQUFZLEdBQUcsT0FBTyxDQUFDO3FCQUMxQjtpQkFDSjtZQUNMLENBQUMsQ0FBQyxDQUFBO1NBQ0w7UUFFRCxJQUFHLGdCQUFnQixJQUFJLElBQUksQ0FBQyxLQUFLO1lBQzdCLElBQUksQ0FBQyxZQUFZLENBQUMsY0FBYyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUM7YUFDakUsSUFBSSwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLEtBQUssSUFBSTtZQUMvQyxJQUFJLENBQUMsWUFBWSxDQUFDLGNBQWMsQ0FBQywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUM7UUFFcEgsSUFBSSxDQUFDLFlBQVksR0FBRyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUM7UUFDbkMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxPQUFPLENBQUMsY0FBYyxFQUFFLElBQUksQ0FBQyxZQUFZLENBQUMsQ0FBQztJQUNoRSxDQUFDO0NBRUo7QUFoREQsa0NBZ0RDIn0=","assetPath":"Assets/scripts/FollowComponent.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"FollowTarget","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"range","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"entityComponent","type":"C:/Users/Nick/Documents/Zepeto/Zepeto
+    demo project/Assets/scripts/Entity.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"FollowComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: a426299afc77c3cdf1fc19cff8c036f0
+  onlyWriteTrigger: 0

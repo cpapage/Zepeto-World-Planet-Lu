@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: b9c6f19bca6b1a84b80316bd24406b6d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Health_1 = require(\"./Health\");\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    Main_1 = require(\"./Main\");\r\nconst Entity_1 = require(\"./Entity\");\r\nclass
+    Kren extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n       
+    this.health = this.GetComponent($typeof(Health_1.default));\r\n        this.EntityComponent
+    = this.GetComponent($typeof(Entity_1.default));\r\n    }\r\n    Update() {\r\n       
+    if (this.health.health <= 0) {\r\n            Main_1.default.instance.LevelManager.EntityComponents.set(this.EntityComponent.Id,
+    null);\r\n            Main_1.default.instance.LevelManager.defeatedLordKren =
+    true;\r\n            UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n       
+    }\r\n    }\r\n}\r\nexports.default = Kren;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiS3Jlbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIktyZW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpREFBcUQ7QUFDckQscUNBQThCO0FBQzlCLDZDQUF5QztBQUN6QyxpQ0FBMEI7QUFDMUIscUNBQThCO0FBRTlCLE1BQXFCLElBQUssU0FBUSxxQ0FBcUI7SUFJbkQsS0FBSztRQUVELElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxnQkFBTSxFQUFHLENBQUM7UUFDMUMsSUFBSSxDQUFDLGVBQWUsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLGdCQUFNLEVBQUcsQ0FBQztJQUN2RCxDQUFDO0lBRUQsTUFBTTtRQUVGLElBQUcsSUFBSSxDQUFDLE1BQU0sQ0FBQyxNQUFNLElBQUksQ0FBQyxFQUMxQjtZQUNJLGNBQUksQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLGdCQUFnQixDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsZUFBZSxDQUFDLEVBQUUsRUFBRSxJQUFJLENBQUMsQ0FBQztZQUMvRSxjQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxnQkFBZ0IsR0FBRyxJQUFJLENBQUM7WUFDbkQsd0JBQVUsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1NBQ3ZDO0lBQ0wsQ0FBQztDQUVKO0FBcEJELHVCQW9CQyJ9","assetPath":"Assets/scripts/Kren.ts","manifest":{"properties":[],"name":"Kren","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 81508729969f4ed5e6e172d509499f74
+  onlyWriteTrigger: 0

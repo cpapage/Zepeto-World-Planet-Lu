@@ -1,0 +1,55 @@
+fileFormatVersion: 2
+guid: 80bcdc55847d6ac498e1920bd5bf5b06
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nexports.Level = exports.GameState = exports.EnemyType =
+    exports.EntityType = exports.FISH_BOAT_HEALTH = exports.TREE_CUTTER_HEALTH =
+    exports.CAGE_HEALTH = exports.KREN_HEALTH = exports.HENCHMAN_HEALTH = exports.PLAYER_HEALTH
+    = void 0;\r\nexports.PLAYER_HEALTH = 1000;\r\nexports.HENCHMAN_HEALTH = 100;\r\nexports.KREN_HEALTH
+    = 500;\r\nexports.CAGE_HEALTH = 50;\r\nexports.TREE_CUTTER_HEALTH = 100;\r\nexports.FISH_BOAT_HEALTH
+    = 200;\r\nvar EntityType;\r\n(function (EntityType) {\r\n    EntityType[EntityType[\"NONE\"]
+    = 0] = \"NONE\";\r\n    EntityType[EntityType[\"PLAYER\"] = 1] = \"PLAYER\";\r\n   
+    EntityType[EntityType[\"ALLY\"] = 2] = \"ALLY\";\r\n    EntityType[EntityType[\"ENEMY\"]
+    = 3] = \"ENEMY\";\r\n})(EntityType = exports.EntityType || (exports.EntityType
+    = {}));\r\nvar EnemyType;\r\n(function (EnemyType) {\r\n    EnemyType[EnemyType[\"NONE\"]
+    = 0] = \"NONE\";\r\n    EnemyType[EnemyType[\"HENCH\"] = 1] = \"HENCH\";\r\n   
+    EnemyType[EnemyType[\"FISH_BOAT\"] = 2] = \"FISH_BOAT\";\r\n    EnemyType[EnemyType[\"TREE_CUT\"]
+    = 3] = \"TREE_CUT\";\r\n    EnemyType[EnemyType[\"KREN\"] = 4] = \"KREN\";\r\n   
+    EnemyType[EnemyType[\"TRI_CAGE\"] = 5] = \"TRI_CAGE\";\r\n    EnemyType[EnemyType[\"T_CAGE\"]
+    = 6] = \"T_CAGE\";\r\n    EnemyType[EnemyType[\"EL_CAGE\"] = 7] = \"EL_CAGE\";\r\n   
+    EnemyType[EnemyType[\"CLND_CAGE\"] = 8] = \"CLND_CAGE\";\r\n    EnemyType[EnemyType[\"ALND_CAGE\"]
+    = 9] = \"ALND_CAGE\"; //adult brontosaurus cage\r\n})(EnemyType = exports.EnemyType
+    || (exports.EnemyType = {}));\r\nvar GameState;\r\n(function (GameState) {\r\n   
+    GameState[GameState[\"NONE\"] = 0] = \"NONE\";\r\n    GameState[GameState[\"LOADING\"]
+    = 1] = \"LOADING\";\r\n    GameState[GameState[\"START\"] = 2] = \"START\";\r\n   
+    GameState[GameState[\"CONTINUE\"] = 3] = \"CONTINUE\";\r\n    GameState[GameState[\"END\"]
+    = 4] = \"END\";\r\n    GameState[GameState[\"COMPLETE_GAME\"] = 5] = \"COMPLETE_GAME\";\r\n})(GameState
+    = exports.GameState || (exports.GameState = {}));\r\nclass Level {\r\n}\r\nexports.Level
+    = Level;\r\nclass Config {\r\n    constructor() {\r\n        this.Level = {\r\n           
+    EnemyTypes: [\r\n                EnemyType.TRI_CAGE,\r\n                EnemyType.FISH_BOAT,\r\n               
+    EnemyType.TREE_CUT,\r\n                EnemyType.T_CAGE,\r\n                EnemyType.ALND_CAGE,\r\n               
+    EnemyType.CLND_CAGE,\r\n                EnemyType.HENCH,\r\n                EnemyType.HENCH,\r\n               
+    EnemyType.HENCH,\r\n                EnemyType.EL_CAGE,\r\n                EnemyType.HENCH,\r\n               
+    EnemyType.HENCH,\r\n                EnemyType.TREE_CUT,\r\n                EnemyType.HENCH,\r\n               
+    EnemyType.TREE_CUT,\r\n                EnemyType.HENCH\r\n            ]\r\n       
+    };\r\n    }\r\n}\r\nexports.default = Config;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29uZmlnLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQ29uZmlnLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFhLFFBQUEsYUFBYSxHQUFHLElBQUksQ0FBQztBQUNyQixRQUFBLGVBQWUsR0FBRyxHQUFHLENBQUM7QUFDdEIsUUFBQSxXQUFXLEdBQUcsR0FBRyxDQUFDO0FBQ2xCLFFBQUEsV0FBVyxHQUFHLEVBQUUsQ0FBQztBQUNqQixRQUFBLGtCQUFrQixHQUFHLEdBQUcsQ0FBQztBQUN6QixRQUFBLGdCQUFnQixHQUFHLEdBQUcsQ0FBQztBQUVwQyxJQUFZLFVBTVg7QUFORCxXQUFZLFVBQVU7SUFFbEIsMkNBQVEsQ0FBQTtJQUNSLCtDQUFVLENBQUE7SUFDViwyQ0FBUSxDQUFBO0lBQ1IsNkNBQVMsQ0FBQTtBQUNiLENBQUMsRUFOVyxVQUFVLEdBQVYsa0JBQVUsS0FBVixrQkFBVSxRQU1yQjtBQUVELElBQVksU0FZWDtBQVpELFdBQVksU0FBUztJQUVqQix5Q0FBUSxDQUFBO0lBQ1IsMkNBQVMsQ0FBQTtJQUNULG1EQUFhLENBQUE7SUFDYixpREFBWSxDQUFBO0lBQ1oseUNBQVEsQ0FBQTtJQUNSLGlEQUFZLENBQUE7SUFDWiw2Q0FBVSxDQUFBO0lBQ1YsK0NBQVcsQ0FBQTtJQUNYLG1EQUFhLENBQUE7SUFDYixtREFBYSxDQUFBLENBQUcseUJBQXlCO0FBQzdDLENBQUMsRUFaVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQVlwQjtBQUVELElBQVksU0FRWDtBQVJELFdBQVksU0FBUztJQUVqQix5Q0FBUSxDQUFBO0lBQ1IsK0NBQVcsQ0FBQTtJQUNYLDJDQUFTLENBQUE7SUFDVCxpREFBWSxDQUFBO0lBQ1osdUNBQU8sQ0FBQTtJQUNQLDJEQUFpQixDQUFBO0FBQ3JCLENBQUMsRUFSVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQVFwQjtBQUVELE1BQWEsS0FBSztDQUdqQjtBQUhELHNCQUdDO0FBRUQsTUFBcUIsTUFBTTtJQUl2QjtRQUVJLElBQUksQ0FBQyxLQUFLLEdBQUc7WUFFVCxVQUFVLEVBQUc7Z0JBQ1QsU0FBUyxDQUFDLFFBQVE7Z0JBQ2xCLFNBQVMsQ0FBQyxTQUFTO2dCQUNuQixTQUFTLENBQUMsUUFBUTtnQkFDbEIsU0FBUyxDQUFDLE1BQU07Z0JBQ2hCLFNBQVMsQ0FBQyxTQUFTO2dCQUNuQixTQUFTLENBQUMsU0FBUztnQkFDbkIsU0FBUyxDQUFDLEtBQUs7Z0JBQ2YsU0FBUyxDQUFDLEtBQUs7Z0JBQ2YsU0FBUyxDQUFDLEtBQUs7Z0JBQ2YsU0FBUyxDQUFDLE9BQU87Z0JBQ2pCLFNBQVMsQ0FBQyxLQUFLO2dCQUNmLFNBQVMsQ0FBQyxLQUFLO2dCQUNmLFNBQVMsQ0FBQyxRQUFRO2dCQUNsQixTQUFTLENBQUMsS0FBSztnQkFDZixTQUFTLENBQUMsUUFBUTtnQkFDbEIsU0FBUyxDQUFDLEtBQUs7YUFDbEI7U0FDSixDQUFBO0lBQ0wsQ0FBQztDQUNKO0FBNUJELHlCQTRCQyJ9","assetPath":"Assets/scripts/Config.ts","manifest":{"properties":[{"assembly":"","name":"Level","type":"C:/Users/Nick/Documents/Zepeto/Zepeto
+    demo project/Assets/scripts/Config.Level","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Level","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: a7b522c312f72f071777026248dc9844
+  onlyWriteTrigger: 0

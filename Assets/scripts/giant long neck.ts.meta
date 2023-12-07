@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+guid: c3b86abe936cf8c4e91f227da656699d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst ZEPETO_Character_Controller_1
+    = require(\"ZEPETO.Character.Controller\");\r\nclass GiantLongNeck extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    Start() {\r\n        this.my_animator = this.GetComponent($typeof(UnityEngine_1.Animator));\r\n       
+    this.headPos = 0;\r\n    }\r\n    Update() {\r\n        if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer
+    !== null) {\r\n            let pPos = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject.transform.position;\r\n           
+    let slopeX = pPos.x - this.transform.position.x;\r\n            let slopeY =
+    pPos.y - this.transform.position.y;\r\n            let slopeZ = pPos.z - this.transform.position.z;\r\n           
+    let magnitude = Math.sqrt(slopeX * slopeX + slopeY * slopeY + slopeZ * slopeZ);\r\n           
+    if (magnitude <= this.range) {\r\n                //let angleInRadians: number
+    = (slopeZ == 0) ? ((slopeX >= 0) ? Math.PI/2 : -Math.PI/2) : Math.atan(slopeX/slopeZ);\r\n               
+    if (slopeZ <= 0)\r\n                    this.headPos = 1;\r\n               
+    /*else if(slopeZ > 0 && slopeX <= 0)\r\n                    this.headPos = 2;\r\n               
+    else if(slopeZ > 0 && slopeX > 0)\r\n                    this.headPos = 3;*/\r\n               
+    else\r\n                    this.headPos = 0;\r\n            }\r\n           
+    else\r\n                this.headPos = 0;\r\n        }\r\n        this.my_animator.SetInteger(\"head
+    pos\", this.headPos);\r\n    }\r\n}\r\nexports.default = GiantLongNeck;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2lhbnQgbG9uZyBuZWNrLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiZ2lhbnQgbG9uZyBuZWNrLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQWdEO0FBQ2hELGlEQUFxRDtBQUNyRCw2RUFBMkQ7QUFFM0QsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUs1RCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFdBQVcsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLHNCQUFRLEVBQUcsQ0FBQztRQUNqRCxJQUFJLENBQUMsT0FBTyxHQUFHLENBQUMsQ0FBQztJQUNyQixDQUFDO0lBRUQsTUFBTTtRQUVGLElBQUksMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxLQUFLLElBQUksRUFDL0M7WUFDSSxJQUFJLElBQUksR0FBWSwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQztZQUM1RyxJQUFJLE1BQU0sR0FBVyxJQUFJLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztZQUN4RCxJQUFJLE1BQU0sR0FBVyxJQUFJLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztZQUN4RCxJQUFJLE1BQU0sR0FBVyxJQUFJLENBQUMsQ0FBQyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztZQUN4RCxJQUFJLFNBQVMsR0FBVyxJQUFJLENBQUMsSUFBSSxDQUFDLE1BQU0sR0FBQyxNQUFNLEdBQUcsTUFBTSxHQUFDLE1BQU0sR0FBRyxNQUFNLEdBQUMsTUFBTSxDQUFDLENBQUM7WUFDakYsSUFBRyxTQUFTLElBQUksSUFBSSxDQUFDLEtBQUssRUFDMUI7Z0JBQ0ksbUhBQW1IO2dCQUNuSCxJQUFHLE1BQU0sSUFBSSxDQUFDO29CQUNWLElBQUksQ0FBQyxPQUFPLEdBQUcsQ0FBQyxDQUFDO2dCQUNyQjs7O3VDQUd1Qjs7b0JBRW5CLElBQUksQ0FBQyxPQUFPLEdBQUcsQ0FBQyxDQUFDO2FBQ3hCOztnQkFFRyxJQUFJLENBQUMsT0FBTyxHQUFHLENBQUMsQ0FBQztTQUN4QjtRQUVELElBQUksQ0FBQyxXQUFXLENBQUMsVUFBVSxDQUFDLFVBQVUsRUFBRSxJQUFJLENBQUMsT0FBTyxDQUFDLENBQUM7SUFDMUQsQ0FBQztDQUVKO0FBdENELGdDQXNDQyJ9","assetPath":"Assets/scripts/giant
+    long neck.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"range","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"GiantLongNeck","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 5b7be548d906d1af7ba6e30506be3461
+  onlyWriteTrigger: 0
